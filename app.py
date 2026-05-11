@@ -340,7 +340,11 @@ def api_strength():
 
 # ─── ENTRY POINT ──────────────────────────────────────────────────────────────
 
-if __name__ == '__main__':
-    # debug=True enables auto-reload and detailed error pages.
-    # NEVER use debug=True in production.
-    app.run(debug=True, port=5000)
+if __name__ == "__main__":
+    import os
+    # Get the port assigned by Render, or default to 5000 for local development
+    port = int(os.environ.get("PORT", 5000))
+    
+    # host='0.0.0.0' allows the server to accept external connections
+    # debug=False is the default and should be used in production environments
+    app.run(host='0.0.0.0', port=port)
